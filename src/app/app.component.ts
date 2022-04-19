@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskService } from './services/task.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'datafo';
+
+  constructor(
+    private taskService: TaskService
+  ){}
+
+  getAllTasks(){
+    this.taskService.getAllTasks()
+    .subscribe(tasks => {
+      console.log(tasks);
+    });
+  }
+  getTask(){
+    this.taskService.getTask('1')
+    .subscribe(task => {
+      console.log(task);
+    });
+  }
+ 
 }
